@@ -1,0 +1,54 @@
+@use '../../index.scss';
+@import '../../mixins.scss';
+
+.home-page-container {
+  @include root-page-container;
+  height: calc(100vh - 64px - 3rem);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: index.$main-color;
+    @include text-shadow(index.$secondary-color);
+    h1 {
+      @include pop-animation;
+
+      text-align: center;
+      font-size: 2rem;
+    }
+    p {
+      @include pop-animation;
+      animation-delay: 0.25s;
+
+      text-align: center;
+      font-size: 1.25rem;
+
+      margin-top: 1rem;
+
+      transform: scale(0);
+    }
+    button {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 971px) {
+  .home-page-container {
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    article {
+      width: 25rem;
+    }
+  }
+}

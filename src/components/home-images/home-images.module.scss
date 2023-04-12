@@ -1,0 +1,46 @@
+@use '../../index.scss';
+@import '../../mixins.scss';
+
+@mixin image-styles($num, $rotate, $size, $top, $right, $delay) {
+  &:nth-child(#{$num}){
+    @include pop-animation;
+    opacity: 0;
+    animation-delay: #{$delay};
+    width: #{$size};
+    height: #{$size};
+    transform: rotateZ(#{$rotate}) !important;
+    top: #{$top};
+    right: #{$right};
+  }
+  
+}
+
+.images-container {
+  display: none;
+  position: relative;
+
+  width: calc(100% - 25rem);
+  height: 100%;
+
+  img {
+    position: absolute;
+
+    filter: drop-shadow(0 0 0.5rem index.$secondary-color);
+
+    @include image-styles(1, -13deg, 225px, 1.75rem, 0.75rem, 0.5s);
+    @include image-styles(2, 16deg, 150px, calc(1.75rem + 225px), calc(0.75rem + 225px), 0.75s);
+    // &:nth-child(2) {
+    //   @include pop-animation;
+    //   opacity: 0;
+    //   animation-delay: 0.75s;
+    //   width: 150px;
+    //   height: 150px;
+    //   transform: rotateZ(16deg);
+    //   top: calc(1.75rem + 225px);
+    //   right: calc(0.75rem + 225px);
+    // }
+  }
+  @media screen and (min-width: 971px) {
+    display: block;
+  }
+}
