@@ -1,6 +1,10 @@
-$main-color: #feddaf;
-$secondary-color: #171717;
-$details-color: #cb4158;
+// $main-color: #feddaf;
+
+$main-color: #EFF1F3;
+// $secondary-color: #171717;
+$secondary-color: #201E1D;
+// $details-color: #cb4158;
+$details-color: #272727;
 
 @keyframes opacity {
   from {
@@ -25,7 +29,7 @@ $details-color: #cb4158;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {

@@ -1,0 +1,8 @@
+.recipe-blocks-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: space-between;
+  
+  margin: 0 1rem;
+  gap: 1rem;
+}

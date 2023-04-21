@@ -25,20 +25,13 @@
   img {
     position: absolute;
 
-    filter: drop-shadow(0 0 0.5rem index.$secondary-color);
+    filter: drop-shadow(0 0 0.5rem index.$main-color);
+    background-color: #fff;
+    border-radius: 50%;
 
-    @include image-styles(1, -13deg, 225px, 1.75rem, 0.75rem, 0.5s);
-    @include image-styles(2, 16deg, 150px, calc(1.75rem + 225px), calc(0.75rem + 225px), 0.75s);
-    // &:nth-child(2) {
-    //   @include pop-animation;
-    //   opacity: 0;
-    //   animation-delay: 0.75s;
-    //   width: 150px;
-    //   height: 150px;
-    //   transform: rotateZ(16deg);
-    //   top: calc(1.75rem + 225px);
-    //   right: calc(0.75rem + 225px);
-    // }
+    @include image-styles(1, -13deg, 225px, 1.75rem, 0.75rem, 0.3s);
+    @include image-styles(2, 16deg, 200px, calc(1.75rem + 225px), calc(0.75rem + 225px), 0.6s);
+    @include image-styles(3, -11deg, 150px, calc(1.75rem + 425px), 1.25rem, 0.9s);
   }
   @media screen and (min-width: 971px) {
     display: block;

@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './recipes.module.scss';
 import { fetchDataFromAPI } from '../../main';
 import { FetchAPIParams } from '../../utils/api';
 import { ListResponse, Recipe } from '../../utils/types';
 import RecipeBlocks from '../../components/recipe-blocks/Recipe-blocks';
+import { LoaderContext } from '../../contexts/LoaderContext';
+import Loader from '../../components/loader/Loader';
 
 const Recipes = () => {
   const [page, setPage] = useState(0);
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [isLoaderActive, setIsLoaderActive] = useState(false)
+
+  const { isLoading, setIsLoading } = useContext(LoaderContext)
+
   useEffect(() => {
     const FETCH_PARAMS: FetchAPIParams = {
       endpoint: '/recipes/list',
@@ -17,13 +21,14 @@ const Recipes = () => {
         size: 16,
       }
     }
-    
+    setIsLoading(true)
     fetchDataFromAPI<ListResponse>(FETCH_PARAMS)
       .then((data) => {
         if (data instanceof Error) {
           Promise.reject(data);
         } else {
           setRecipes(data.results);
+          setIsLoading(false)
         }
       })
       .catch((error) => {
@@ -32,7 +37,7 @@ const Recipes = () => {
     }, [page]);
   return (
     <section className={styles['recipes-page-container']}>
-      <RecipeBlocks recipes={recipes} />
+      {isLoading ? <Loader /> : <RecipeBlocks recipes={recipes} />}
     </section>
   );
 };

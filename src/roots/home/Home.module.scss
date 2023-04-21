@@ -16,7 +16,7 @@
     align-items: center;
 
     color: index.$main-color;
-    @include text-shadow(index.$secondary-color);
+    @include text-shadow(index.$main-color);
     h1 {
       @include pop-animation;
 
