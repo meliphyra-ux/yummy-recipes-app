@@ -36,6 +36,9 @@
     }
     button {
       margin-top: 1.5rem;
+      @include pop-animation;
+      transform: scale(0);
+      animation-delay: 0.4s;
     }
   }
 }

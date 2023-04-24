@@ -10,14 +10,18 @@ const RecipeBlock: FC<Recipe> = ({ thumbnail_url, name, description }) => {
     <article className={styles['recipe-block-container']}>
       <div className={styles['recipe-image-container']}>
         <LazyLoadImage
-          width={300}
-          height={300}
           src={thumbnail_url}
           alt={name}
-          placeholderSrc='./while-loading.webp'
+          placeholderSrc="./while-loading.webp"
         />
       </div>
       <div className={styles['recipe-information-container']}>
+      <img
+        className={styles.illustration}
+        src="https://illustrations.popsy.co/amber/chef-serving-food.svg"
+        alt="Chef serving food"
+        title="Let's get it started"
+      />
         <h3>{name}</h3>
         {description && (
           <p>{description.split(' ').slice(0, 8).join(' ') + '...'}</p>

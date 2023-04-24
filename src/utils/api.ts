@@ -43,7 +43,7 @@ export const fetchAPIData = () => {
         },
         transformResponse: [
           function (data) {
-            const parcedData = JSON.parse(data)
+            const parcedData = JSON.parse(data);
             if (endpoint === '/recipes/list') {
               return {
                 count: parcedData.count,
@@ -69,7 +69,7 @@ export const fetchAPIData = () => {
               };
             }
             return parcedData;
-          }
+          },
         ],
       });
       cache.set(endpoint, data);

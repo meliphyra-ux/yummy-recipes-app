@@ -1,17 +1,28 @@
-import { useContext, useEffect, useState } from 'react';
-import styles from './recipes.module.scss';
+import { useContext, useEffect, useState, useReducer } from 'react';
+
 import { fetchDataFromAPI } from '../../main';
 import { FetchAPIParams } from '../../utils/api';
-import { ListResponse, Recipe } from '../../utils/types';
-import RecipeBlocks from '../../components/recipe-blocks/Recipe-blocks';
+
 import { LoaderContext } from '../../contexts/LoaderContext';
 import Loader from '../../components/loader/Loader';
 
+import styles from './recipes.module.scss';
+import { ListResponse, Recipe } from '../../utils/types';
+import RecipeBlocks from '../../components/recipe-blocks/Recipe-blocks';
+import { RecipesReducerProps, recipesReducer } from './RecipesReducer';
+
+const INITIAL_STATE: RecipesReducerProps = {
+  count: 0,
+  recipes: [],
+};
+
 const Recipes = () => {
   const [page, setPage] = useState(0);
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [state, dispatch] = useReducer(recipesReducer, INITIAL_STATE);
 
-  const { isLoading, setIsLoading } = useContext(LoaderContext)
+  const { recipes, count } = state;
+
+  const { isLoading, setIsLoading } = useContext(LoaderContext);
 
   useEffect(() => {
     const FETCH_PARAMS: FetchAPIParams = {
@@ -19,22 +30,22 @@ const Recipes = () => {
       params: {
         from: page,
         size: 16,
-      }
-    }
-    setIsLoading(true)
+      },
+    };
+    setIsLoading(true);
     fetchDataFromAPI<ListResponse>(FETCH_PARAMS)
       .then((data) => {
         if (data instanceof Error) {
           Promise.reject(data);
         } else {
-          setRecipes(data.results);
-          setIsLoading(false)
+          dispatch({ count: data.count, recipes: data.results });
+          setIsLoading(false);
         }
       })
       .catch((error) => {
         console.warn(error);
       });
-    }, [page]);
+  }, [page]);
   return (
     <section className={styles['recipes-page-container']}>
       {isLoading ? <Loader /> : <RecipeBlocks recipes={recipes} />}

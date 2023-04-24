@@ -18,3 +18,12 @@ export type AutoCompleteResponse = {
   search_value: string;
   type: string;
 }
+
+export type Action<T> = {
+  type: T;
+}
+
+export type ActionWithPayload<T, P> = {
+  type: T;
+  payload: P;
+}
