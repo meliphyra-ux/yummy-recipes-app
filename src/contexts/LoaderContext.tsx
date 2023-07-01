@@ -1,12 +1,8 @@
-import { FC, ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useState } from 'react';
 
 type LoaderContextProps = {
   isLoading: boolean;
   setIsLoading: (bool: boolean) => void;
-};
-
-type LoaderProviderProps = {
-  children: ReactNode;
 };
 
 const INITIAL_VALUE: LoaderContextProps = {
@@ -16,7 +12,11 @@ const INITIAL_VALUE: LoaderContextProps = {
 
 export const LoaderContext = createContext(INITIAL_VALUE);
 
-const LoaderProvider: FC<LoaderProviderProps> = ({ children }) => {
+const LoaderProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const value = { isLoading, setIsLoading };

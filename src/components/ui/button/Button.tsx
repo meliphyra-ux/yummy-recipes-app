@@ -30,6 +30,7 @@ const StyledButton = styled.button<{ $style: keyof typeof buttonStyles }>`
   ${(props) => buttonStyles[props.$style]};
 
   padding: 0.5rem 0.75rem;
+  
   border-width: 1px;
   border-style: solid;
 

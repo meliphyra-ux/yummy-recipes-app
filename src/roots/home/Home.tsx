@@ -1,5 +1,6 @@
 import Button from '~/components/ui/button/Button';
 import HomeImages from '~/components/features/home-images/HomeImages';
+
 import styles from './Home.module.scss';
 
 const Home = () => {

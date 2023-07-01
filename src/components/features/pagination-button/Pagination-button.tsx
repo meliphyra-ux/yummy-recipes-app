@@ -5,7 +5,9 @@ const StyledPaginationButton = styled.button<{ $isPageSelected: boolean }>`
   color: ${(props) => (props.$isPageSelected ? colors.secondary : colors.main)};
   background-color: ${(props) =>
     props.$isPageSelected ? colors.main : colors.secondary};
+
   font-size: 1.25rem;
+  
   padding: 0.2rem 0.4rem;
 
   border: none;

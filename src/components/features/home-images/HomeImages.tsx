@@ -1,5 +1,6 @@
-import { styled } from 'styled-components';
 import ImageCircle from '~/components/ui/image-circles/ImageCircles';
+
+import { styled } from 'styled-components';
 
 const HomeImagesContainer = styled.aside`
   display: none;

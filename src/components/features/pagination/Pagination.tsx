@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import PaginationButton from '../pagination-button/Pagination-button';
+
 import styled from 'styled-components';
 import { colors } from '~/utils/_mixins';
 
@@ -16,7 +16,7 @@ const StyledPaginationContainer = styled.div`
   height: fit-content;
 `;
 
-const Pagination: FC<PaginationProps> = ({ amountOfPages, currentPage }) => {
+const Pagination = ({ amountOfPages, currentPage }: PaginationProps) => {
   const paginationButtons = Array(amountOfPages)
     .fill(0)
     .map((_, page) => (
