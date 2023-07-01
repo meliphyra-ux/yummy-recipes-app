@@ -1,5 +1,5 @@
-import Button from '../../components/button/Button';
-import HomeImages from '../../components/home-images/Home-images';
+import Button from '~/components/ui/button/Button';
+import HomeImages from '~/components/features/home-images/HomeImages';
 import styles from './Home.module.scss';
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
       <article>
         <h1>Say hello to wonderful recipes with Yummy!</h1>
         <p>From now on your favorite cookbook</p>
-        <Button variant="normal">Let's get it started</Button>
+        <Button $style="normal">Let's get it started</Button>
       </article>
       <HomeImages />
     </section>

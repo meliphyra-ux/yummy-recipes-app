@@ -1,16 +1,16 @@
-import { Recipe } from '../../utils/types';
+import { Recipe } from '~/utils/types';
 
 export type RecipesReducerProps = {
-  count: number;
+  amountOfPages: number;
   recipes: Recipe[];
 };
 
 export const recipesReducer = (
   state: RecipesReducerProps,
-  action: RecipesReducerProps
+  action: { payload: RecipesReducerProps}
 ) => {
   return {
     ...state,
-    ...action,
+    ...action.payload,
   };
 };

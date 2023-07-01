@@ -16,3 +16,17 @@
 
   border: 1px solid index.$secondary-color;
 }
+
+@mixin image-styles($num, $rotate, $size, $top, $right, $delay) {
+  &:nth-child(#{$num}){
+    @include pop-animation;
+    opacity: 0;
+    animation-delay: #{$delay};
+    width: #{$size};
+    height: #{$size};
+    transform: rotateZ(#{$rotate}) !important;
+    top: #{$top};
+    right: #{$right};
+  }
+  
+}

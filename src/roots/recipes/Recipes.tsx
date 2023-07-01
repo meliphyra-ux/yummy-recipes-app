@@ -1,26 +1,37 @@
-import { useContext, useEffect, useState, useReducer } from 'react';
-
-import { fetchDataFromAPI } from '../../main';
-import { FetchAPIParams } from '../../utils/api';
-
-import { LoaderContext } from '../../contexts/LoaderContext';
-import Loader from '../../components/loader/Loader';
+import {
+  useContext,
+  useEffect,
+  useState,
+  useReducer,
+  ChangeEvent,
+} from 'react';
 
 import styles from './recipes.module.scss';
-import { ListResponse, Recipe } from '../../utils/types';
-import RecipeBlocks from '../../components/recipe-blocks/Recipe-blocks';
-import { RecipesReducerProps, recipesReducer } from './RecipesReducer';
+
+import { FetchAPIParams, fetchAPIData } from '~/utils/api';
+
+import { LoaderContext } from '~/contexts/LoaderContext';
+
+import Loader from '~/components/ui/loader/Loader';
+
+import { ListResponse } from '~/utils/types';
+import RecipeCards from '~/components/features/recipe-blocks/RecipeCards';
+import { RecipesReducerProps, recipesReducer } from './recipesReducer';
+import Pagination from '~/components/features/pagination/Pagination';
+
+const amountOfRecipesOnPage = 16;
 
 const INITIAL_STATE: RecipesReducerProps = {
-  count: 0,
+  amountOfPages: 0,
   recipes: [],
 };
 
 const Recipes = () => {
-  const [page, setPage] = useState(0);
+  // IMPORTANT!!!!! Move currentPage to RecipesReducer to avoid prop drilling.
+  const [currentPage, setCurrentPage] = useState(1);
   const [state, dispatch] = useReducer(recipesReducer, INITIAL_STATE);
 
-  const { recipes, count } = state;
+  const { recipes, amountOfPages } = state;
 
   const { isLoading, setIsLoading } = useContext(LoaderContext);
 
@@ -28,27 +39,41 @@ const Recipes = () => {
     const FETCH_PARAMS: FetchAPIParams = {
       endpoint: '/recipes/list',
       params: {
-        from: page,
-        size: 16,
+        from: currentPage,
+        size: amountOfRecipesOnPage,
       },
     };
     setIsLoading(true);
-    fetchDataFromAPI<ListResponse>(FETCH_PARAMS)
+    fetchAPIData<ListResponse>(FETCH_PARAMS)
       .then((data) => {
         if (data instanceof Error) {
           Promise.reject(data);
         } else {
-          dispatch({ count: data.count, recipes: data.results });
+          const amountOfPages = +(data.count / amountOfRecipesOnPage).toFixed();
+          dispatch({
+            payload: { amountOfPages, recipes: data.results },
+          });
           setIsLoading(false);
         }
       })
       .catch((error) => {
         console.warn(error);
       });
-  }, [page]);
+  }, [currentPage]);
+
+  const moveToPage = (e: ChangeEvent<HTMLInputElement>) => {
+    setCurrentPage(Number(e.target.value));
+  };
   return (
     <section className={styles['recipes-page-container']}>
-      {isLoading ? <Loader /> : <RecipeBlocks recipes={recipes} />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <RecipeCards recipes={recipes} />
+          <Pagination amountOfPages={amountOfPages} currentPage={currentPage} />
+        </>
+      )}
     </section>
   );
 };
