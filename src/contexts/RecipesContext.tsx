@@ -1,9 +1,8 @@
-import { ReactNode, createContext, useReducer } from 'react';
+import { ReactNode, createContext, useReducer, Dispatch } from 'react';
 import { Recipe } from '~/utils/types';
 import {
   RECIPES_ACTIONS,
   RecipesActions,
-  changeCurrentPage,
 } from './actions/recipesActions';
 
 type RecipesReducerProps = {
@@ -16,7 +15,10 @@ const INITIAL_STATE = {
   amountOfPages: 0,
   currentPage: 1,
   recipes: [],
-};
+  dispatch: () => {}
+} as RecipesReducerProps & {
+  dispatch: Dispatch<RecipesActions>;
+}
 
 const recipesReducer = (
   state: RecipesReducerProps,
@@ -43,11 +45,9 @@ export const RecipesContext = createContext(INITIAL_STATE);
 
 const RecipesProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(recipesReducer, INITIAL_STATE);
-  const moveToPage = (page: number) => {
-    dispatch(changeCurrentPage(page));
-  };
   return (
-    // <RecipesContext.Provider>{children}</RecipesContext.Provider>
-    <></>
+    <RecipesContext.Provider value={{...state, dispatch}}>{children}</RecipesContext.Provider>
   );
 };
+
+export default RecipesProvider;

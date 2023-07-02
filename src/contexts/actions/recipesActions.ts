@@ -11,7 +11,7 @@ export type RecipesActions =
   | ActionWithPayload<RECIPES_ACTIONS.CHANGE_CURRENT_PAGE, number>
   | ActionWithPayload<RECIPES_ACTIONS.SET_AMOUNT_OF_PAGES, number>;
 
-export const addRecipePage = (recipesPage: Recipe[]): ActionWithPayload<RECIPES_ACTIONS.ADD_RECIPE_PAGE, Recipe[]> => ({
+export const addRecipesPage = (recipesPage: Recipe[]): ActionWithPayload<RECIPES_ACTIONS.ADD_RECIPE_PAGE, Recipe[]> => ({
   type: RECIPES_ACTIONS.ADD_RECIPE_PAGE,
   payload: recipesPage,
 });
