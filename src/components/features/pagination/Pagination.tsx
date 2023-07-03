@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import PaginationButton from '../pagination-button/Pagination-button';
-
-import styled from 'styled-components';
-import { colors } from '~/utils/_mixins';
 import { RecipesContext } from '~/contexts/RecipesContext';
+
+import PaginationButton from '../pagination-button/Pagination-button';
+import styled from 'styled-components';
+
+import { colors } from '~/utils/_mixins';
 
 const StyledPaginationContainer = styled.div`
   border-radius: 0.25rem;
@@ -19,33 +20,39 @@ const measureBoundOfPagination = (
   currentPage: number,
   amountOfPages: number
 ) => {
-  if (currentPage >= 3 && amountOfPages - currentPage >= 3) {
+  const minPagePositionToMove = 3
+  // If currentPage is 3 pages from the start or from the end
+  if (currentPage >= minPagePositionToMove && amountOfPages - currentPage >= minPagePositionToMove) {
     return [currentPage - 3, currentPage + 2];
-  } else if (currentPage < 3) {
+  } 
+  // If page positioned at the start
+  else if (currentPage < 3) {
     return [0, amountOfDisplayedPaginationButtons];
-  } else{
+  }
+  // If page positioned at the end
+  else{
     return [amountOfPages - currentPage, amountOfPages];
   }
 };
 
+const paginationButtons = (amountOfPages: number, currentPage: number) => Array.from(
+  { length: amountOfPages - 1 },
+  (_, index) => index + 1
+)
+  .slice(...measureBoundOfPagination(currentPage, amountOfPages))
+  .map((page) => (
+    <PaginationButton
+      key={page}
+      page={page}
+      $isPageSelected={currentPage === page}
+    />
+  ));
+
 const Pagination = () => {
   const { currentPage, amountOfPages } = useContext(RecipesContext);
 
-  const paginationButtons = Array.from(
-    { length: amountOfPages - 1 },
-    (_, index) => index + 1
-  )
-    .slice(...measureBoundOfPagination(currentPage, amountOfPages))
-    .map((page) => (
-      <PaginationButton
-        key={page}
-        page={page}
-        $isPageSelected={currentPage === page}
-      />
-    ));
-
   return (
-    <StyledPaginationContainer>{paginationButtons}</StyledPaginationContainer>
+    <StyledPaginationContainer>{paginationButtons(amountOfPages, currentPage)}</StyledPaginationContainer>
   );
 };
 

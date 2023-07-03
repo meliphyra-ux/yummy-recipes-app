@@ -20,8 +20,7 @@ import styles from './recipes.module.scss';
 const amountOfRecipesOnPage = 16;
 
 const Recipes = () => {
-  // IMPORTANT!!!!! Move currentPage to RecipesReducer to avoid prop drilling.
-  const { currentPage, recipes, amountOfPages, dispatch } =
+  const { currentPage, dispatch } =
     useContext(RecipesContext);
 
   const { isLoading, setIsLoading } = useContext(LoaderContext);
@@ -30,7 +29,7 @@ const Recipes = () => {
     const FETCH_PARAMS: FetchAPIParams = {
       endpoint: '/recipes/list',
       params: {
-        from: currentPage,
+        from: currentPage * amountOfRecipesOnPage,
         size: amountOfRecipesOnPage,
       },
     };
@@ -56,8 +55,8 @@ const Recipes = () => {
         <Loader />
       ) : (
         <>
-          <RecipeCards recipes={recipes} />
-          <Pagination amountOfPages={amountOfPages} currentPage={currentPage} />
+          <RecipeCards />
+          <Pagination />
         </>
       )}
     </section>
