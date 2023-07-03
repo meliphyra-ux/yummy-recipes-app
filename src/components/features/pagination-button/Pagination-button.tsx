@@ -1,4 +1,7 @@
+import { useContext } from 'react';
 import { styled } from 'styled-components';
+import { RecipesContext } from '~/contexts/RecipesContext';
+import { changeCurrentPage } from '~/contexts/actions/recipesActions';
 import { colors } from '~/utils/_mixins';
 
 const StyledPaginationButton = styled.button<{ $isPageSelected: boolean }>`
@@ -21,8 +24,13 @@ const PaginationButton = ({
   page: number;
   $isPageSelected: boolean;
 }) => {
+  const { dispatch } = useContext(RecipesContext);
+  
+  const handleOnClick = () => {
+    dispatch(changeCurrentPage(page))
+  }
   return (
-    <StyledPaginationButton $isPageSelected={$isPageSelected}>
+    <StyledPaginationButton $isPageSelected={$isPageSelected} onClick={handleOnClick}>
       {page}
     </StyledPaginationButton>
   );

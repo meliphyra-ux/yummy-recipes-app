@@ -1,12 +1,9 @@
+import { useContext } from 'react';
 import PaginationButton from '../pagination-button/Pagination-button';
 
 import styled from 'styled-components';
 import { colors } from '~/utils/_mixins';
-
-type PaginationProps = {
-  amountOfPages: number;
-  currentPage: number;
-};
+import { RecipesContext } from '~/contexts/RecipesContext';
 
 const StyledPaginationContainer = styled.div`
   border-radius: 0.25rem;
@@ -16,14 +13,34 @@ const StyledPaginationContainer = styled.div`
   height: fit-content;
 `;
 
-const Pagination = ({ amountOfPages, currentPage }: PaginationProps) => {
-  const paginationButtons = Array(amountOfPages)
-    .fill(0)
-    .map((_, page) => (
+const amountOfDisplayedPaginationButtons = 5;
+
+const measureBoundOfPagination = (
+  currentPage: number,
+  amountOfPages: number
+) => {
+  if (currentPage >= 3 && amountOfPages - currentPage >= 3) {
+    return [currentPage - 3, currentPage + 2];
+  } else if (currentPage < 3) {
+    return [0, amountOfDisplayedPaginationButtons];
+  } else{
+    return [amountOfPages - currentPage, amountOfPages];
+  }
+};
+
+const Pagination = () => {
+  const { currentPage, amountOfPages } = useContext(RecipesContext);
+
+  const paginationButtons = Array.from(
+    { length: amountOfPages - 1 },
+    (_, index) => index + 1
+  )
+    .slice(...measureBoundOfPagination(currentPage, amountOfPages))
+    .map((page) => (
       <PaginationButton
-        key={page + 1}
-        page={page + 1}
-        $isPageSelected={currentPage === page + 1}
+        key={page}
+        page={page}
+        $isPageSelected={currentPage === page}
       />
     ));
 
