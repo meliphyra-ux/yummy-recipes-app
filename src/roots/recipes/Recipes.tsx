@@ -4,7 +4,7 @@ import {
 } from 'react';
 
 import { FetchAPIParams, fetchAPIData } from '~/utils/api';
-import { addRecipesPage, setAmountOfPages } from '~/contexts/actions/recipesActions';
+import { switchRecipesPage, setAmountOfPages } from '~/contexts/actions/recipesActions';
 
 import { RecipesContext } from '~/contexts/RecipesContext';
 import { LoaderContext } from '~/contexts/LoaderContext';
@@ -40,7 +40,7 @@ const Recipes = () => {
           Promise.reject(data);
         } else {
           const amountOfPages = +(data.count / amountOfRecipesOnPage).toFixed();
-          dispatch(addRecipesPage(data.results));
+          dispatch(switchRecipesPage(data.results));
           dispatch(setAmountOfPages(amountOfPages))
           setIsLoading(false);
         }

@@ -43,7 +43,6 @@ const StyledButton = styled.button<{ $style: keyof typeof buttonStyles }>`
 interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   children: ReactNode;
   $style: keyof typeof buttonStyles;
-  type?: 'submit';
   onClick?: MouseEventHandler;
 }
 

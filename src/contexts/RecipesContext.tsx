@@ -26,8 +26,8 @@ const recipesReducer = (
 ): RecipesReducerProps => {
   const { type, payload } = action;
   switch (type) {
-    case RECIPES_ACTIONS.ADD_RECIPE_PAGE: {
-      return { ...state, recipes: [...state.recipes, ...payload] };
+    case RECIPES_ACTIONS.SWITCH_RECIPE_PAGE: {
+      return { ...state, recipes: payload };
     }
     case RECIPES_ACTIONS.CHANGE_CURRENT_PAGE: {
       return { ...state, currentPage: payload };
