@@ -10,13 +10,13 @@ const StyledLoaderContainer = styled.section`
   justify-content: center;
   align-items: center;
 
-  background-color: ${colors.details};
+  background-color: ${colors.accent};
 
   .loader {
     width: 75px;
     height: 75px;
 
-    border-bottom: 2px solid ${colors.main};
+    border-bottom: 2px solid ${colors.secondary};
     border-radius: 50%;
   
     animation-name: spin;

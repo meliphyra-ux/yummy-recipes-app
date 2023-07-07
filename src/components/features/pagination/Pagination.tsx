@@ -1,11 +1,13 @@
 import { useContext } from 'react';
+
+import { changeCurrentPage } from '~/contexts/actions/recipesActions';
+
 import { RecipesContext } from '~/contexts/RecipesContext';
 
 import PaginationButton from '../pagination-button/Pagination-button';
 import Button from '~/components/ui/button/Button';
-import StyledPaginationContainer from './StyledPagination';
+import StyledPaginationContainer from './StyledPaginationContainer';
 
-import { changeCurrentPage } from '~/contexts/actions/recipesActions';
 
 const amountOfDisplayedPaginationButtons = 5;
 
@@ -22,7 +24,7 @@ const measureBoundOfPagination = (
     return [currentPage - 3, currentPage + 2];
   }
   // If page positioned at the start
-  else if (currentPage < 3) {
+  else if (currentPage < minPagePositionToMove) {
     return [0, amountOfDisplayedPaginationButtons];
   }
   // If page positioned at the end

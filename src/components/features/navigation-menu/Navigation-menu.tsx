@@ -1,6 +1,10 @@
 import { useState } from 'react';
-import styles from './navigation-menu.module.scss';
-import { Link } from 'react-router-dom';
+
+import LinkButton from '~/components/ui/link-button/LinkButton';
+import {
+  StyledMenuButtons,
+  StyledNavigationMenuContainer,
+} from './StyledNavigationMenu';
 
 const NavigationMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,24 +12,16 @@ const NavigationMenu = () => {
   const handleMenuButtons = () => {
     setIsMenuOpen((state) => !state);
   };
+
   return (
-    <nav className={styles.navigation}>
-      <i
-        onClick={handleMenuButtons}
-        className="fa-solid fa-bars fa-lg"
-        style={{ color: '#171717' }}
-      ></i>
-      <ul
-        className={styles['menu-buttons']}
-        style={{
-          display: isMenuOpen ? 'flex' : 'none',
-        }}
-      >
-        <Link to="/recipes"><li>Recipes</li></Link>
-        <Link to="/contacts"><li>Contacts</li></Link>
-        <li>In progress🛠️</li>
-      </ul>
-    </nav>
+    <StyledNavigationMenuContainer>
+      <i onClick={handleMenuButtons} className="fa-solid fa-bars fa-lg" />
+      <StyledMenuButtons $isMenuOpen={isMenuOpen}>
+        <LinkButton to="/recipes" title="Recipes" />
+        <LinkButton to="/contacts" title="Contacts" />
+        <p>On dev stage🛠️</p>
+      </StyledMenuButtons>
+    </StyledNavigationMenuContainer>
   );
 };
 

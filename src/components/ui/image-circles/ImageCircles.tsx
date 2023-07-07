@@ -32,7 +32,7 @@ const StyledImageCircle = styled.img<StyledImageCircleProps>`
   left: ${(props) => props.$left ?? ' '};
   right: ${(props) => props.$right ?? ' '};
 
-  filter: drop-shadow(0 0 0.5rem ${props => props.$dropShadow ?? colors.main});
+  filter: drop-shadow(0 0 0.5rem ${props => props.$dropShadow ?? colors.secondary});
   background-color: ${props => props.$backgroundColor ?? '#fff'};
   border-radius: 50%;
 

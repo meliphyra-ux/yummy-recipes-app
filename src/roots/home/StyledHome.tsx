@@ -1,10 +1,15 @@
-@use '../../index.scss';
-@import '../../mixins.scss';
+import { styled } from 'styled-components';
+import {
+  colors,
+  popAnimation,
+  rootPageContainer,
+  textShadow,
+} from '~/utils/_mixins';
 
-.home-page-container {
-  @include root-page-container;
-  height: calc(100vh - 64px - 3rem);
-  
+export const StyledHomeContainer = styled.section`
+  ${rootPageContainer};
+  height: calc(100vh - 7rem);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,16 +20,17 @@
     flex-direction: column;
     align-items: center;
 
-    color: index.$main-color;
-    @include text-shadow(index.$main-color);
+    color: ${colors.secondary};
+    ${textShadow(colors.secondary)};
+
     h1 {
-      @include pop-animation;
+      ${popAnimation};
 
       text-align: center;
       font-size: 2rem;
     }
     p {
-      @include pop-animation;
+      ${popAnimation};
       animation-delay: 0.25s;
 
       text-align: center;
@@ -35,16 +41,14 @@
       transform: scale(0);
     }
     button {
+      ${popAnimation};
       margin-top: 1.5rem;
-      @include pop-animation;
       transform: scale(0);
       animation-delay: 0.4s;
     }
   }
-}
 
-@media screen and (min-width: 971px) {
-  .home-page-container {
+  @media screen and (min-width: 971px) {
     flex-direction: row;
     justify-content: space-between;
 
@@ -54,4 +58,4 @@
       width: 25rem;
     }
   }
-}
+`;

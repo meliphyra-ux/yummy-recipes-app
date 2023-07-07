@@ -14,8 +14,8 @@ import { ListResponse } from '~/utils/types';
 import Loader from '~/components/ui/loader/Loader';
 import RecipeCards from '~/components/features/recipe-blocks/RecipeCards';
 import Pagination from '~/components/features/pagination/Pagination';
+import { StyledRecipesContainer } from './StyledRecipes';
 
-import styles from './recipes.module.scss';
 
 const amountOfRecipesOnPage = 16;
 
@@ -50,7 +50,7 @@ const Recipes = () => {
       });
   }, [currentPage]);
   return (
-    <section className={styles['recipes-page-container']}>
+    <StyledRecipesContainer>
       {isLoading ? (
         <Loader />
       ) : (
@@ -59,7 +59,7 @@ const Recipes = () => {
           <Pagination />
         </>
       )}
-    </section>
+    </StyledRecipesContainer>
   );
 };
 

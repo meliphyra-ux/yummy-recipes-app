@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { RecipesContext } from '~/contexts/RecipesContext';
 
@@ -12,7 +13,9 @@ const RecipeCards = () => {
   return (
     <div className={styles['recipe-blocks-container']}>
       {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} {...recipe} />
+        <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
+          <RecipeCard {...recipe} />
+        </Link>
       ))}
     </div>
   );

@@ -11,18 +11,18 @@ import { colors } from '~/utils/_mixins';
 const buttonStyles = {
   normal: () => css`
     color: ${colors.secondary};
-    background-color: ${colors.main};
+    background-color: ${colors.primary};
     border-color: ${colors.secondary};
   `,
   inverted: () => css`
-    color: ${colors.main};
-    background-color: ${colors.secondary};
-    border-color: ${colors.main};
+    color: ${colors.secondary};
+    background-color: ${colors.primary};
+    border-color: ${colors.secondary};
   `,
   alternative: () => css`
-    color: ${colors.details};
+    color: ${colors.accent};
     background-color: ${colors.secondary};
-    border-color: ${colors.details};
+    border-color: ${colors.primary};
   `,
 };
 
