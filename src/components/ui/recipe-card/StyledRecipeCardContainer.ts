@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { colors, popAnimation } from "~/utils/_mixins";
+import styled from 'styled-components';
+import { colors, popAnimation } from '~/utils/_mixins';
 
 const StyledRecipeCardContainer = styled.article`
   width: 100%;
@@ -10,7 +10,7 @@ const StyledRecipeCardContainer = styled.article`
   align-items: center;
 
   text-decoration: none;
-  
+
   position: relative;
 
   cursor: pointer;
@@ -73,7 +73,7 @@ const StyledRecipeCardContainer = styled.article`
     }
   }
 
-  p{
+  p {
     height: 2.5rem;
   }
 

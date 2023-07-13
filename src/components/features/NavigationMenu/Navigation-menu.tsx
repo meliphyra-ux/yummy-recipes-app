@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import LinkButton from '~/components/ui/link-button/LinkButton';
+import LinkButton from '~/components/ui/LinkButton/LinkButton';
 import {
   StyledMenuButtons,
   StyledNavigationMenuContainer,

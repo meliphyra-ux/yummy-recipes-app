@@ -1,23 +1,23 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 
 import { RecipesContext } from '~/contexts/RecipesContext';
 
+import { Link } from 'react-router-dom';
+
 import RecipeCard from '~/components/ui/recipe-card/RecipeCard';
-
-import styles from './recipe-blocks.module.scss'
-
+import StyledRecipeCards from './StyledRecipeCards';
 
 const RecipeCards = () => {
-  const { recipes } = useContext(RecipesContext)
+  const { recipes } = useContext(RecipesContext);
+
   return (
-    <div className={styles['recipe-blocks-container']}>
+    <StyledRecipeCards>
       {recipes.map((recipe) => (
         <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
           <RecipeCard {...recipe} />
         </Link>
       ))}
-    </div>
+    </StyledRecipeCards>
   );
 };
 

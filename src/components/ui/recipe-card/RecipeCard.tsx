@@ -3,9 +3,8 @@ import { Recipe } from '~/utils/types';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-import ImageCircle from '../image-circles/ImageCircles';
+import ImageCircle from '../ImageCircle/ImageCircle';
 import StyledRecipeCardContainer from './StyledRecipeCardContainer';
-
 
 const RecipeCard: FC<Recipe> = ({ thumbnail_url, name, description }) => {
   return (

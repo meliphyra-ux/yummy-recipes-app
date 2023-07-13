@@ -2,8 +2,6 @@ import { styled } from 'styled-components';
 import { colors } from '~/utils/_mixins';
 
 export const StyledNavigationMenuContainer = styled.nav`
-  cursor: pointer;
-
   i {
     color: ${colors.accent};
 
@@ -41,7 +39,7 @@ export const StyledMenuButtons = styled.ul<{ $isMenuOpen: boolean }>`
     margin-top: 0.75rem;
   }
 
-  li {
+  a {
     font-size: 1rem;
 
     color: ${colors.primary};

@@ -33,7 +33,7 @@ export async function fetchAPIData<T>({
   endpoint,
   params,
 }: FetchAPIParams): Promise<T | Error> {
-  const cachedPage = endpoint + JSON.stringify(params)
+  const cachedPage = endpoint + JSON.stringify(params);
   if (cache.has(cachedPage)) {
     return cache.get(cachedPage);
   }
@@ -82,7 +82,6 @@ export async function fetchAPIData<T>({
         },
       ],
     });
-    console.log(data)
     // Caching value for next time;
     cache.set(cachedPage, data);
 

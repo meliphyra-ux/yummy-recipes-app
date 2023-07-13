@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import NavigationMenu from '~/components/features/navigation-menu/Navigation-menu';
+import NavigationMenu from '~/components/features/NavigationMenu/Navigation-menu';
 
 import styles from './navigation.module.scss';
 

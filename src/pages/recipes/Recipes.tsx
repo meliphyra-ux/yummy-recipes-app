@@ -1,10 +1,10 @@
-import {
-  useContext,
-  useEffect,
-} from 'react';
+import { useContext, useEffect } from 'react';
 
 import { FetchAPIParams, fetchAPIData } from '~/utils/api';
-import { switchRecipesPage, setAmountOfPages } from '~/contexts/actions/recipesActions';
+import {
+  switchRecipesPage,
+  setAmountOfPages,
+} from '~/contexts/actions/recipesActions';
 
 import { RecipesContext } from '~/contexts/RecipesContext';
 import { LoaderContext } from '~/contexts/LoaderContext';
@@ -12,16 +12,14 @@ import { LoaderContext } from '~/contexts/LoaderContext';
 import { ListResponse } from '~/utils/types';
 
 import Loader from '~/components/ui/loader/Loader';
-import RecipeCards from '~/components/features/recipe-blocks/RecipeCards';
-import Pagination from '~/components/features/pagination/Pagination';
+import RecipeCards from '~/components/features/RecipeCards/RecipeCards';
+import Pagination from '~/components/features/Pagination/Pagination';
 import { StyledRecipesContainer } from './StyledRecipes';
-
 
 const amountOfRecipesOnPage = 16;
 
 const Recipes = () => {
-  const { currentPage, dispatch } =
-    useContext(RecipesContext);
+  const { currentPage, dispatch } = useContext(RecipesContext);
 
   const { isLoading, setIsLoading } = useContext(LoaderContext);
 
@@ -41,7 +39,7 @@ const Recipes = () => {
         } else {
           const amountOfPages = +(data.count / amountOfRecipesOnPage).toFixed();
           dispatch(switchRecipesPage(data.results));
-          dispatch(setAmountOfPages(amountOfPages))
+          dispatch(setAmountOfPages(amountOfPages));
           setIsLoading(false);
         }
       })

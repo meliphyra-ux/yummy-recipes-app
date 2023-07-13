@@ -1,4 +1,4 @@
-import ImageCircle from '~/components/ui/image-circles/ImageCircles';
+import ImageCircle from '~/components/ui/ImageCircle/ImageCircle';
 
 import { styled } from 'styled-components';
 

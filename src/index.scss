@@ -1,8 +1,8 @@
 // $main-color: #feddaf;
 
-$main-color: #EFF1F3;
+$main-color: #eff1f3;
 // $secondary-color: #171717;
-$secondary-color: #201E1D;
+$secondary-color: #201e1d;
 // $details-color: #cb4158;
 $details-color: #272727;
 
@@ -16,14 +16,13 @@ $details-color: #272727;
 }
 
 @keyframes size {
-  from{
-    transform: scale(0);
+  from {
+    transform: scale(0.8);
   }
-  to{
+  to {
     transform: scale(1);
   }
-} 
-
+}
 
 * {
   box-sizing: border-box;
