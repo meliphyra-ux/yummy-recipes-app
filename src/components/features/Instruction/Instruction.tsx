@@ -9,8 +9,10 @@ const Instruction = ({
 }) => {
   return (
     <StyledInstruction>
-      <h3>{orderNumber}:</h3>
-      <p>{text}</p>
+      <strong>{orderNumber}:</strong>
+      <p>
+        <em>{text}</em>
+      </p>
     </StyledInstruction>
   );
 };

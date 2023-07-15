@@ -8,8 +8,8 @@ import { RecipesContext } from '~/contexts/RecipesContext';
 
 import StyledRecipe from './StyledRecipe';
 import Loader from '~/components/ui/loader/Loader';
-import Divider from '~/components/ui/Divider/Divider';
 import Instruction from '~/components/features/Instruction/Instruction';
+import RecipeInformation from '~/components/features/RecipeInformation/RecipeInformation';
 
 const instructions = (instructions: any[]) =>
   instructions.map((instruction, id) => (
@@ -46,24 +46,7 @@ const Recipe = () => {
         <Loader />
       ) : (
         <StyledRecipe>
-          <div>
-            <img
-              src={selectedRecipe.thumbnail_url}
-              alt={selectedRecipe.name}
-              width={250}
-              height={250}
-            />
-            <div className="information">
-              <h2>{selectedRecipe.name}</h2>
-              <Divider />
-              <p>{selectedRecipe.description}</p>
-              <Divider />
-              {selectedRecipe.cook_time_minutes !== 0 && (
-                <p>{selectedRecipe.cook_time_minutes} minutes to make</p>
-              )}
-            </div>
-          </div>
-
+          <RecipeInformation selectedRecipe={selectedRecipe} />
           {selectedRecipe.instructions.length > 0 && (
             <div className="instructions">
               {instructions(selectedRecipe.instructions)}
