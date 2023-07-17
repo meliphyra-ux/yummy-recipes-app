@@ -4,7 +4,7 @@ import { RecipesContext } from '~/contexts/RecipesContext';
 
 import { Link } from 'react-router-dom';
 
-import RecipeCard from '~/components/ui/recipe-card/RecipeCard';
+import RecipeCard from '~/components/ui/RecipeCard/RecipeCard';
 import StyledRecipeCards from './StyledRecipeCards';
 
 const RecipeCards = () => {

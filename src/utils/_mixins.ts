@@ -27,15 +27,20 @@ export const spinAnimation = css`
 
 export const rootPageContainer = css`
   min-height: calc(100vh - 7rem);
-  padding: 3rem 0;
+  padding: 3rem 2rem;
   margin: 1.5rem 0;
 
-  background-color: ${colors.accent};
+  --s: 50px; /* control the size */
+
+  --_g: ${colors.accent} 90deg, ${colors.primary} 0;
+  background: conic-gradient(from 90deg at 2px 2px, var(--_g)),
+    conic-gradient(from 90deg at 1px 1px, var(--_g));
+  background-size: var(--s) var(--s), calc(var(--s) / 5) calc(var(--s) / 5);
+  background-position: center;
 
   border: 1px solid ${colors.secondary};
 `;
 
-
 export const textShadow = (color: string) => css`
-  text-shadow: 1px 1px 2px ${color}
-`
+  text-shadow: 1px 1px 2px ${color};
+`;

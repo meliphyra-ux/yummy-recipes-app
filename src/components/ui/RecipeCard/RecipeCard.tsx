@@ -13,7 +13,7 @@ const RecipeCard: FC<Recipe> = ({ thumbnail_url, name, description }) => {
         <LazyLoadImage
           src={thumbnail_url}
           alt={name}
-          placeholderSrc="./while-loading.webp"
+          placeholderSrc="/while-loading.webp"
         />
       </div>
       <div className="recipe-information-container">

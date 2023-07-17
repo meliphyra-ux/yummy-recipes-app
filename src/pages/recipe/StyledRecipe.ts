@@ -8,8 +8,6 @@ const StyledRecipe = styled.section`
   flex-direction: row;
   justify-content: space-between;
 
-  padding-inline: 2rem;
-
   color: ${colors.secondary};
 
   & > div:first-of-type {

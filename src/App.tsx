@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navigation from './pages/navigation/Navigation';
-import Home from './pages/home/Home';
-import Recipes from './pages/recipes/Recipes';
-import Recipe from './pages/recipe/Recipe';
+import Header from './pages/Header/Header';
+import Home from './pages/Home/Home';
+import Recipes from './pages/Recipes/Recipes';
+import Recipe from './pages/Recipe/Recipe';
+import Contacts from './pages/Contacts/Contacts';
 
 import WithRecipesProvider from './components/features/WithRecipesProvider/WithRecipesProvider';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Navigation />
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,6 +22,7 @@ const App = () => {
           path="/recipes/:id"
           element={<WithRecipesProvider page={<Recipe />} />}
         />
+        <Route path="/contacts" element={<Contacts />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
 
 import NavigationMenu from '~/components/features/NavigationMenu/Navigation-menu';
+import StyledHeader from './StyledHeader';
 
-import styles from './navigation.module.scss';
-
-const Navigation = () => {
+const Header = () => {
   return (
-    <header className={styles.header}>
+    <StyledHeader>
       <Link to="/">
         <h1>Yummy!</h1>
       </Link>
       <NavigationMenu />
-    </header>
+    </StyledHeader>
   );
 };
 
-export default Navigation;
+export default Header;

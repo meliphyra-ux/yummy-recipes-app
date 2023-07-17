@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, Fragment } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Recipe as RecipeType } from '~/utils/types';
@@ -7,7 +7,7 @@ import { fetchAPIData } from '~/utils/api';
 import { RecipesContext } from '~/contexts/RecipesContext';
 
 import StyledRecipe from './StyledRecipe';
-import Loader from '~/components/ui/loader/Loader';
+import Loader from '~/components/ui/Loader/Loader';
 import Instruction from '~/components/features/Instruction/Instruction';
 import RecipeInformation from '~/components/features/RecipeInformation/RecipeInformation';
 
@@ -29,16 +29,25 @@ const Recipe = () => {
     const selectedRecipe = recipes.filter(
       (recipe) => recipe.id === +(id ?? 0)
     )[0];
-    if (selectedRecipe) setSelectedRecipe(selectedRecipe);
-    else
+    if (selectedRecipe) {
+      setSelectedRecipe(selectedRecipe);
+      document.title = selectedRecipe.name + ' - Yummy!';
+    } else {
       fetchAPIData<RecipeType>({
         endpoint: '/recipes/get-more-info',
         params: { id: +(id ?? 0) },
       }).then((data) => {
         if (data instanceof Error) throw new Error(data.message);
         setSelectedRecipe(data);
+        document.title = data.name + ' - Yummy!';
       });
-  });
+    }
+
+    return () => {
+      document.title = 'Yummy!';
+      setSelectedRecipe(null);
+    };
+  }, []);
 
   return (
     <>
@@ -47,6 +56,7 @@ const Recipe = () => {
       ) : (
         <StyledRecipe>
           <RecipeInformation selectedRecipe={selectedRecipe} />
+
           {selectedRecipe.instructions.length > 0 && (
             <div className="instructions">
               {instructions(selectedRecipe.instructions)}

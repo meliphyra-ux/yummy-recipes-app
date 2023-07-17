@@ -14,7 +14,11 @@ const RecipeInformation = ({ selectedRecipe }: { selectedRecipe: Recipe }) => {
         <Divider />
         <p>{description}</p>
         <Divider />
-        {cook_time_minutes !== 0 && <p>{cook_time_minutes} minutes to make</p>}
+        {cook_time_minutes && cook_time_minutes !== 0 ? (
+          <p>{cook_time_minutes} minutes to make</p>
+        ) : (
+          <p>Easy to make!</p>
+        )}
       </div>
     </StyledRecipeInformation>
   );

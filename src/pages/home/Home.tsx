@@ -4,6 +4,7 @@ import Button from '~/components/ui/Button/Button';
 import HomeImages from '~/components/features/HomeImages/HomeImages';
 
 import { StyledHomeContainer } from './StyledHome';
+import { useEffect } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();

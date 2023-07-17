@@ -5,7 +5,6 @@ const StyledRecipeCards = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: space-between;
 
-  margin: 0 1rem;
   gap: 30px;
 `;
 

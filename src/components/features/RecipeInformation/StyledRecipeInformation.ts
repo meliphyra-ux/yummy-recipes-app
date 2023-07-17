@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { colors } from '~/utils/_mixins';
 
 const StyledRecipeInformation = styled.div`
+  max-height: 600px;
+
   img {
     width: 250px;
     aspect-ratio: 1/1;

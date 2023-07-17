@@ -1,16 +1,13 @@
-import { styled } from 'styled-components'
+import { styled } from 'styled-components';
 
-import { colors, spinAnimation } from '~/utils/_mixins'
+import { colors, rootPageContainer, spinAnimation } from '~/utils/_mixins';
 
 const StyledLoaderContainer = styled.section`
-  width: 100%;
-  height: 100%;
+  ${rootPageContainer};
 
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: ${colors.accent};
 
   .loader {
     width: 75px;
@@ -18,7 +15,7 @@ const StyledLoaderContainer = styled.section`
 
     border-bottom: 2px solid ${colors.secondary};
     border-radius: 50%;
-  
+
     animation-name: spin;
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
@@ -27,14 +24,14 @@ const StyledLoaderContainer = styled.section`
 
     ${spinAnimation}
   }
-`
+`;
 
 const Loader = () => {
   return (
     <StyledLoaderContainer>
-      <div className='loader'></div>
+      <div className="loader"></div>
     </StyledLoaderContainer>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

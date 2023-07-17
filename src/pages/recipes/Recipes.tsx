@@ -11,7 +11,7 @@ import { LoaderContext } from '~/contexts/LoaderContext';
 
 import { ListResponse } from '~/utils/types';
 
-import Loader from '~/components/ui/loader/Loader';
+import Loader from '~/components/ui/Loader/Loader';
 import RecipeCards from '~/components/features/RecipeCards/RecipeCards';
 import Pagination from '~/components/features/Pagination/Pagination';
 import { StyledRecipesContainer } from './StyledRecipes';
@@ -31,6 +31,7 @@ const Recipes = () => {
         size: amountOfRecipesOnPage,
       },
     };
+    document.title = 'Recipes - Yummy!';
     setIsLoading(true);
     fetchAPIData<ListResponse>(FETCH_PARAMS)
       .then((data) => {
@@ -46,6 +47,9 @@ const Recipes = () => {
       .catch((error) => {
         console.warn(error);
       });
+    return () => {
+      document.title = 'Yummy!';
+    };
   }, [currentPage]);
   return (
     <StyledRecipesContainer>
