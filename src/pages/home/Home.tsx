@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
-import Button from '~/components/ui/Button/Button';
-import HomeImages from '~/components/features/HomeImages/HomeImages';
+import Button from '~/components/ui/Button/Button.tsx';
+import HomeImages from '~/components/features/HomeImages/HomeImages.tsx';
 
 import { StyledHomeContainer } from './StyledHome';
-import { useEffect } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
