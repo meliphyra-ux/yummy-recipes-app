@@ -7,9 +7,9 @@ import { fetchAPIData } from '~/utils/api';
 import { RecipesContext } from '~/contexts/RecipesContext';
 
 import StyledRecipe from './StyledRecipe';
-import Loader from '~/components/ui/Loader/Loader.tsx';
-import Instruction from '~/components/features/Instruction/Instruction.tsx';
-import RecipeInformation from '~/components/features/RecipeInformation/RecipeInformation.tsx';
+import Loader from '~/components/ui/Loader/Loader';
+import Instruction from '~/components/features/Instruction/Instruction';
+import RecipeInformation from '~/components/features/RecipeInformation/RecipeInformation';
 
 const instructions = (instructions: any[]) =>
   instructions.map((instruction, id) => (

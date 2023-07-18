@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import Button from '~/components/ui/Button/Button.tsx';
-import HomeImages from '~/components/features/HomeImages/HomeImages.tsx';
+import Button from '~/components/ui/Button/Button';
+import HomeImages from '~/components/features/HomeImages/HomeImages';
 
 import { StyledHomeContainer } from './StyledHome';
 
