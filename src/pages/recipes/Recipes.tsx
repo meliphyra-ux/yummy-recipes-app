@@ -11,7 +11,7 @@ import { LoaderContext } from '~/contexts/LoaderContext';
 
 import { ListResponse } from '~/utils/types';
 
-import Loader from '../../components/ui/Loader/Loader';
+import Loader from '~/components/ui/Loader/Loader';
 import RecipeCards from '~/components/features/RecipeCards/RecipeCards';
 import Pagination from '~/components/features/Pagination/Pagination';
 import { StyledRecipesContainer } from './StyledRecipes';

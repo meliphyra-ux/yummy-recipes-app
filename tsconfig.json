@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "skipDefaultLibCheck": true,
     "baseUrl": "./src",
     "paths": {
       "~/*": ["./*"]
