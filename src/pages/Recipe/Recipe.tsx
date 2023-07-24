@@ -50,21 +50,20 @@ const Recipe = () => {
   }, []);
 
   return (
-    <>
+    <StyledRecipe>
       {selectedRecipe === null ? (
         <Loader />
       ) : (
-        <StyledRecipe>
+        <>
           <RecipeInformation selectedRecipe={selectedRecipe} />
-
           {selectedRecipe.instructions.length > 0 && (
             <div className="instructions">
               {instructions(selectedRecipe.instructions)}
             </div>
           )}
-        </StyledRecipe>
+        </>
       )}
-    </>
+    </StyledRecipe>
   );
 };
 
