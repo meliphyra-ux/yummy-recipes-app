@@ -4,6 +4,7 @@ import { colors, rootPageContainer } from '~/utils/_mixins';
 const StyledRecipe = styled.section`
   ${rootPageContainer};
 
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

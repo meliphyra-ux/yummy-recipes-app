@@ -1,13 +1,14 @@
 import { styled } from 'styled-components';
 
-import { colors, rootPageContainer, spinAnimation } from '~/utils/_mixins';
+import { colors, spinAnimation } from '~/utils/_mixins';
 
 const StyledLoaderContainer = styled.section`
-  ${rootPageContainer};
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  flex: 1;
 
   .loader {
     width: 75px;
