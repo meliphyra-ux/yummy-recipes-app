@@ -9,7 +9,6 @@ import StyledRecipeCards from './StyledRecipeCards';
 
 const RecipeCards = () => {
   const { recipes } = useContext(RecipesContext);
-
   return (
     <StyledRecipeCards>
       {recipes.map((recipe) => (

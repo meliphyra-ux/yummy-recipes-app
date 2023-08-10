@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '~/utils/_mixins';
 
 const StyledRecipeInformation = styled.div`
-  max-height: 600px;
+  height: fit-content;
 
   img {
     width: 250px;
@@ -19,7 +19,7 @@ const StyledRecipeInformation = styled.div`
     flex-direction: column;
     gap: 0.5rem;
 
-    padding: 0 0.25rem;
+    padding: 0.5rem;
     margin-top: 1.5rem;
 
     width: 250px;

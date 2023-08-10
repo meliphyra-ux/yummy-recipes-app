@@ -1,24 +1,36 @@
-import { ReactNode, createContext, useReducer, Dispatch } from 'react';
+import {
+  ReactNode,
+  createContext,
+  useReducer,
+  Dispatch,
+  useEffect,
+} from 'react';
+import { useRecipes } from '~/hooks/useRecipes';
+
 import { Recipe } from '~/utils/types';
+
 import {
   RECIPES_ACTIONS,
   RecipesActions,
+  setState,
 } from './actions/recipesActions';
 
-type RecipesReducerProps = {
+export type RecipesReducerProps = {
   amountOfPages: number;
   currentPage: number;
   recipes: Recipe[];
+  isLoading: boolean;
 };
 
 const INITIAL_STATE = {
   amountOfPages: 0,
   currentPage: 1,
   recipes: [],
-  dispatch: () => {}
+  dispatch: () => {},
+  isLoading: false,
 } as RecipesReducerProps & {
   dispatch: Dispatch<RecipesActions>;
-}
+};
 
 const recipesReducer = (
   state: RecipesReducerProps,
@@ -28,6 +40,9 @@ const recipesReducer = (
   switch (type) {
     case RECIPES_ACTIONS.SWITCH_RECIPE_PAGE: {
       return { ...state, recipes: payload };
+    }
+    case RECIPES_ACTIONS.SET_STATE: {
+      return { ...state, ...payload };
     }
     case RECIPES_ACTIONS.CHANGE_CURRENT_PAGE: {
       return { ...state, currentPage: payload };
@@ -45,8 +60,20 @@ export const RecipesContext = createContext(INITIAL_STATE);
 
 const RecipesProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(recipesReducer, INITIAL_STATE);
+
+  const { recipes, amountOfPages, isLoading } = useRecipes(
+    state.currentPage,
+    16
+  );
+
+  useEffect(() => {
+    dispatch(setState({ recipes, amountOfPages, isLoading }));
+  }, [recipes, amountOfPages, isLoading]);
+
   return (
-    <RecipesContext.Provider value={{...state, dispatch}}>{children}</RecipesContext.Provider>
+    <RecipesContext.Provider value={{ ...state, dispatch }}>
+      {children}
+    </RecipesContext.Provider>
   );
 };
 
