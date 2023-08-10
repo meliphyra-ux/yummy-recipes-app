@@ -27,7 +27,6 @@ const Pagination = () => {
     const nextPage = currentPage + 1;
     if (nextPage < amountOfPages) dispatch(changeCurrentPage(nextPage));
   };
-
   const handlePreviousPage = () => {
     const previousPage = currentPage - 1;
     if (previousPage > 0) dispatch(changeCurrentPage(previousPage));

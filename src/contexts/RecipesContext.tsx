@@ -1,9 +1,6 @@
 import { ReactNode, createContext, useReducer, Dispatch } from 'react';
 import { Recipe } from '~/utils/types';
-import {
-  RECIPES_ACTIONS,
-  RecipesActions,
-} from './actions/recipesActions';
+import { RECIPES_ACTIONS, RecipesActions } from './actions/recipesActions';
 
 type RecipesReducerProps = {
   amountOfPages: number;
@@ -15,10 +12,10 @@ const INITIAL_STATE = {
   amountOfPages: 0,
   currentPage: 1,
   recipes: [],
-  dispatch: () => {}
+  dispatch: () => {},
 } as RecipesReducerProps & {
   dispatch: Dispatch<RecipesActions>;
-}
+};
 
 const recipesReducer = (
   state: RecipesReducerProps,
@@ -46,7 +43,9 @@ export const RecipesContext = createContext(INITIAL_STATE);
 const RecipesProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(recipesReducer, INITIAL_STATE);
   return (
-    <RecipesContext.Provider value={{...state, dispatch}}>{children}</RecipesContext.Provider>
+    <RecipesContext.Provider value={{ ...state, dispatch }}>
+      {children}
+    </RecipesContext.Provider>
   );
 };
 
