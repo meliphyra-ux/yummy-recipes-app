@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FetchAPIParams, fetchAPIData } from '~/utils/api';
-import { ListResponse, Recipe } from '~/utils/types';
+import { ListResponse } from '~/utils/types';
 
 export const useRecipes = (currentPage: number, recipesAmount: number) => {
   const [data, setData] = useState<ListResponse>({
@@ -38,6 +38,6 @@ export const useRecipes = (currentPage: number, recipesAmount: number) => {
       }
     }
     getRecipes();
-  }, [currentPage]);
+  }, [currentPage, recipesAmount]);
   return { recipes, amountOfPages, isLoading, error };
 };

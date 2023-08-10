@@ -1,10 +1,4 @@
 import { useContext, useEffect } from 'react';
-import { useRecipes } from '~/hooks/useRecipes';
-
-import {
-  switchRecipesPage,
-  setAmountOfPages,
-} from '~/contexts/actions/recipesActions';
 
 import { RecipesContext } from '~/contexts/RecipesContext';
 
@@ -14,18 +8,7 @@ import Pagination from '~/components/features/Pagination/Pagination';
 import { StyledRecipesContainer } from './StyledRecipes';
 
 const Recipes = () => {
-  const { currentPage, amountOfPages, dispatch } = useContext(RecipesContext);
-  const {
-    recipes,
-    amountOfPages: newAmountOfPages,
-    isLoading,
-  } = useRecipes(currentPage, 16);
-
-  useEffect(() => {
-    dispatch(switchRecipesPage(recipes));
-    if (newAmountOfPages !== amountOfPages)
-      dispatch(setAmountOfPages(newAmountOfPages));
-  }, [recipes, newAmountOfPages]);
+  const { isLoading } = useContext(RecipesContext);
 
   useEffect(() => {
     document.title = 'Recipes - Yummy!';
